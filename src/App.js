@@ -1,16 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-import { LoginPage, DashboardPage } from './pages';
+import { NavBar } from './components';
+import { LoginPage, TopJokesPage } from './pages';
 
 const App = () => {
   return (
+    
     <Router>
+      <NavBar/>
       <Switch>
         <Route exact path="/login">
           <LoginPage />
         </Route>
-        <Route exact path="/dashboard">
-          <DashboardPage />
+        <Route exact path="/topJokes">
+          <TopJokesPage />
         </Route>
         <Route path="">
           <Redirect to="/login" />
