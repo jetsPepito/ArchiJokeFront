@@ -1,17 +1,30 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 import { JokeCard } from "../../components";
+import axios from "axios";
 
 const TopJokesPage = () => {
+    const [jokes, setJokes] = useState([]);
+
+    useEffect(() => {
+        axios
+            .get("http://localhost:8000/jokes")
+            .then((response) => {
+                setJokes(response.data);
+            })
+            .catch(e => {
+                console.error(e);
+            })
+    }, []);
+
     return (
-        <JokeCard joke={{
-            title: "Title of the joke",
-            body: "Body of the joke",
-            date: "09/10/2021",
-            likes: 315,
-            dislikes: 58,
-            author: "Author"
-        }}/>
+        <div>
+            {
+                jokes.map((joke)=> (
+                    <JokeCard key={joke._id} joke={joke}/>
+                ))
+            }
+        </div>
     );
 };
 

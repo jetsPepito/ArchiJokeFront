@@ -9,7 +9,7 @@ const JokeCard = ({ joke }) => {
         <Paper elevation={3} className="px-3 pb-3" style={{ backgroundColor: colors.secondGray }}>
             <div className="flex justify-between"> 
                 <Typography variant="h6">{joke.title}</Typography>
-                <Typography variant="h6">{joke.date}</Typography>
+                <Typography variant="h6">{new Date(joke.date).toDateString()}</Typography>
             </div>
             <div>{joke.body}</div>
             <div className="flex justify-between">
