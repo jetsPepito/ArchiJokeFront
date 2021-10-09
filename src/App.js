@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+
 import { NavBar } from './components';
 import { LoginPage, TopJokesPage } from './pages';
 
 const App = () => {
   return (
-    
     <Router>
       <NavBar/>
       <Switch>
@@ -21,6 +21,6 @@ const App = () => {
       </Switch>
     </Router>
   );
-}
+};
 
 export default App;
