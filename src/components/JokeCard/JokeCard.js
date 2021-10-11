@@ -6,18 +6,18 @@ import colors from "../../utils/color";
 
 const JokeCard = ({ joke }) => {
     return (
-        <Paper elevation={3} className="px-3 pb-3" style={{ backgroundColor: colors.secondGray }}>
-            <div className="flex justify-between"> 
-                <Typography variant="h6">{joke.title}</Typography>
-                <Typography variant="h6">{new Date(joke.date).toDateString()}</Typography>
+        <Paper elevation={3} className="px-3 pb-3" style={{ backgroundColor: colors.secondYellow }}>
+            <div className="flex justify-between mt-2">
+                <Typography variant="h5" marginTop={1} marginLeft={1}>{joke.title}</Typography>
+                <Typography marginTop={2} marginRight={2}>{new Date(joke.date).toDateString()}</Typography>
             </div>
-            <div>{joke.body}</div>
+            <div className="my-4 ml-2">{joke.body}</div>
             <div className="flex justify-between">
                 <div>
-                    <Button>+ {joke.likes}</Button>
-                    <Button>- {joke.dislikes}</Button>
+                    <Button style={{ color: "green" }}>+ {joke.likes}</Button>
+                    <Button style={{ color: "red" }}>- {joke.dislikes}</Button>
                 </div>
-                <div>{joke.author}</div>
+                <div className="mr-3">{joke.author}</div>
             </div>
         </Paper>
     );
