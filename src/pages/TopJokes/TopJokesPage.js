@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 
 import { JokeCard, PageContainer } from "../../components";
 import axios from "axios";
-import {Grid, Stack, Typography} from "@mui/material";
+import { Stack } from "@mui/material";
 
 const TopJokesPage = () => {
     const [jokes, setJokes] = useState([]);

@@ -1,5 +1,5 @@
 import React from "react";
-import {Typography} from "@mui/material";
+import { Typography } from "@mui/material";
 import colors from "../../utils/color";
 
 const PageContainer = ({ title, children }) => {
@@ -11,6 +11,6 @@ const PageContainer = ({ title, children }) => {
             {children}
         </div>
     )
-}
+};
 
 export default PageContainer;
