@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 
 import { NavBar } from './components';
-import { LoginPage, MyJokesPage, TopJokesPage } from './pages';
+import { AddJokePage, LoginPage, MyJokesPage, TopJokesPage } from './pages';
 
 const App = () => {
   return (
@@ -17,6 +17,9 @@ const App = () => {
         </Route>
         <Route exact path="/myJokes">
           <MyJokesPage />
+        </Route>
+        <Route exact path="/addJoke">
+          <AddJokePage />
         </Route>
         <Route path="">
           <Redirect to="/login" />

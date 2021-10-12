@@ -17,7 +17,12 @@ const NavBar = () => {
             position="static"
             style={{ backgroundColor : colors.yellow, color: colors.primaryGray }}>
                 <Toolbar>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    <Typography
+                        variant="h6"
+                        component="div"
+                        sx={{ flexGrow: 1, cursor: "pointer" }}
+                        onClick={() => history.push("/topJokes")}
+                    >
                         ArchiJoke
                     </Typography>
                     <Button color="inherit" onClick={() => history.push("/topJokes")}>Top</Button>
