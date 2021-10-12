@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
-
-import { JokeCard, PageContainer } from "../../components";
 import axios from "axios";
 import { Stack } from "@mui/material";
+
+import { JokeCard, PageContainer } from "../../components";
 
 const TopJokesPage = () => {
     const [jokes, setJokes] = useState([]);
@@ -19,7 +19,7 @@ const TopJokesPage = () => {
     }, []);
 
     return (
-        <PageContainer title="Best Jokes">
+        <PageContainer title="Top Jokes">
             <Stack container spacing={2} >
                 {
                     jokes.map((joke)=> (

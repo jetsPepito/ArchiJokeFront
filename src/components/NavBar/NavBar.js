@@ -20,8 +20,8 @@ const NavBar = () => {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         ArchiJoke
                     </Typography>
-                    <Button color="inherit" onClick={() => history.push("/topjokes")}>Top</Button>
-                    <Button color="inherit">My Jokes</Button>
+                    <Button color="inherit" onClick={() => history.push("/topJokes")}>Top</Button>
+                    <Button color="inherit" onClick={() => history.push("/myJokes")}>My Jokes</Button>
                     <Button color="inherit">Log Out</Button>
                 </Toolbar>
             </AppBar>
