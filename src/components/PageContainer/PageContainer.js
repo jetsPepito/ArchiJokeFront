@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography } from "@mui/material";
+
 import colors from "../../utils/color";
 
 const PageContainer = ({ title, children }) => {

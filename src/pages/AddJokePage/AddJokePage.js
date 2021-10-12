@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
-import TextField from '@mui/material/TextField';
 import Fab from '@mui/material/Fab';
 import NavigationIcon from '@mui/icons-material/Add';
 import { Box } from "@mui/system";
 import axios from "axios";
 
 import { PageContainer } from "../../components";
+import MyInput from "../../components/MyInput/MyInput";
 
 const MyJokesPage = () => {
     const history = useHistory();
@@ -57,28 +57,23 @@ const MyJokesPage = () => {
                 autoComplete="off"
             >
                 <div>
-                    <TextField
+                    <MyInput
                         error={validated && !title}
-                        id="standard-basic"
                         label="Title"
-                        variant="standard"
                         value={title}
                         onChange={body => setTitle(body.target.value)}
-                        color="warning"
                         fullWidth
                         inputProps={{ maxLength: 50 }}
                     />
                 </div>
                 <div className="my-5">
-                    <TextField
+                    <MyInput
                         error={validated && !body}
-                        id="outlined-multiline-static"
-                        label="The body of the Joke"
+                        label="Joke's body"
                         multiline
                         rows={0}
                         value={body}
                         onChange={body => setBody(body.target.value)}
-                        color="warning"
                         fullWidth
                     />
                 </div>

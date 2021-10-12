@@ -11,7 +11,7 @@ const JokeCard = ({ joke }) => {
                 <Typography variant="h5" marginTop={1} marginLeft={1}>{joke.title}</Typography>
                 <Typography variant="h8" marginTop={2} marginRight={2}>{new Date(joke.date).toDateString()}</Typography>
             </div>
-            <div className="my-4 ml-2">{joke.body}</div>
+            <div className="my-4 ml-2" style={{ whiteSpace: 'pre-line' }}>{joke.body}</div>
             <div className="flex justify-between">
                 <div>
                     <Button style={{ color: "green" }}>+ {joke.likes}</Button>
