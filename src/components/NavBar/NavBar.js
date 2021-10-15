@@ -7,9 +7,11 @@ import Button from '@mui/material/Button';
 import { useHistory } from "react-router";
 
 import colors from "../../utils/color";
+import store from '../../store';
 
 const NavBar = () => {
     const history = useHistory();
+    const { dispatch } = store;
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -27,7 +29,7 @@ const NavBar = () => {
                     </Typography>
                     <Button color="inherit" onClick={() => history.push("/topJokes")}>Top</Button>
                     <Button color="inherit" onClick={() => history.push("/myJokes")}>My Jokes</Button>
-                    <Button color="inherit">Log Out</Button>
+                    <Button color="inherit" onClick={() => dispatch.login.logout()}>Log Out</Button>
                 </Toolbar>
             </AppBar>
         </Box>

@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import { Stack } from "@mui/material";
 
 import { AddJokeButton, JokeCard, PageContainer } from "../../components";
+import api from "../../api/api";
 
 const TopJokesPage = () => {
     const [jokes, setJokes] = useState([]);
 
     useEffect(() => {
-        axios
+        api
             .get("http://localhost:8000/jokes")
             .then((response) => {
                 setJokes(response.data);

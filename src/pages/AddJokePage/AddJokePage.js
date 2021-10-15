@@ -3,10 +3,10 @@ import { useHistory } from "react-router";
 import Fab from '@mui/material/Fab';
 import NavigationIcon from '@mui/icons-material/Add';
 import { Box } from "@mui/system";
-import axios from "axios";
 
 import { PageContainer } from "../../components";
 import MyInput from "../../components/MyInput/MyInput";
+import api from "../../api/api";
 
 const MyJokesPage = () => {
     const history = useHistory();
@@ -22,8 +22,8 @@ const MyJokesPage = () => {
             return;
         }
 
-        axios
-            .post("http://localhost:8000/jokes",
+        api
+            .post("jokes",
                 {
                     title,
                     body,
@@ -31,11 +31,6 @@ const MyJokesPage = () => {
                     likes: 0,
                     dislikes: 0,
                     author: "AuthorName",
-                },
-                {
-                    headers: {
-                        "content-type": "application/x-www-form-urlencoded"
-                    }
                 }
             )
             .then((_) => {

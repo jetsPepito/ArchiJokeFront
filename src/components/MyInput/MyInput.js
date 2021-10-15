@@ -35,6 +35,7 @@ const CustomizedInputs = (props) => {
 
   return (
     <TextField
+      type={props.type}
       className={classes.root}
       inputProps={props.inputProps}
       InputProps={{

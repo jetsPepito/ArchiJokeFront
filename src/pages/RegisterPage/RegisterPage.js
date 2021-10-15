@@ -1,44 +1,53 @@
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Fab } from '@mui/material';
 import { Box } from '@mui/system';
-import React, { useState } from 'react';
 
 import MyInput from '../../components/MyInput/MyInput';
 import colors from '../../utils/color';
-import store from '../../store';
+import api from '../../api/api';
 
-const LoginPage = () => {
-    const { dispatch } = store;
+const RegisterPage = () => {
+    const history = useHistory();
 
     const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
     const [validated, setValidated] = useState(false);
 
-    const login = async () => {
+    const register = async () => {
         setValidated(true);
 
-        if (!email || !password) return;
+        if (!email || !password || !name) return;
 
-        const res = await dispatch.login.login({ email, password });
-
-        if (res && res.error) {
-            if (res.body.response)
-                setErrorMessage(res.body.response.data.detail);
-            else
-                setErrorMessage("Unable to login");
-            return;
-        }
+        api
+            .post(
+                "users/register",
+                {
+                    email,
+                    password,
+                    name
+                }
+            )
+            .then((res) => {
+                history.push('login');
+            })
+            .catch((err) => {
+                setErrorMessage("Unable to register");
+            });
     };
 
     return (
-        <div style={{
+        <div style={
+            {
                 display: 'flex',
                 justifyContent:'center',
                 alignItems:'center',
                 height: '100vh'
-            }}
-        >
+            }
+        }>
             <Box
                 width="50%"
                 container
@@ -59,7 +68,7 @@ const LoginPage = () => {
                         fullWidth
                     />
                 </div>
-                <div className="mt-5 mb-5">
+                <div className="mt-5">
                     <MyInput
                         type="password"
                         error={validated && !password}
@@ -69,29 +78,29 @@ const LoginPage = () => {
                         fullWidth
                     />
                 </div>
+                <div className="mt-5 mb-5">
+                    <MyInput
+                        error={validated && !name}
+                        label="Name"
+                        value={name}
+                        onChange={value => setName(value.target.value)}
+                        fullWidth
+                    />
+                </div>
                 {
                     validated &&
                     <div style={{ color: colors.red, fontSize: 12 }}>
                         {errorMessage}
                     </div>
                 }
-                <div className="mt-5 mb-2">
-                    <Fab variant="extended" onClick={login}>
-                        Login
+                <div className="mt-5">
+                    <Fab variant="extended" onClick={register} >
+                        Register
                     </Fab>
                 </div>
-                <a
-                    href="register"
-                    style={{
-                        color: colors.secondYellow,
-                        fontSize: 14,
-                    }}
-                >
-                    No account? Register now !
-                </a>
             </Box>
         </div>
     )
 };
 
-export default LoginPage;
+export default RegisterPage;
