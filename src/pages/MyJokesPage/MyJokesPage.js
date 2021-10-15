@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { useSelector } from "react-redux";
 import { Stack } from "@mui/material";
 
 import { AddJokeButton, JokeCard, PageContainer } from "../../components";
@@ -6,12 +7,13 @@ import api from "../../api/api";
 
 const MyJokesPage = () => {
     const [jokes, setJokes] = useState([]);
-
+    const userId = useSelector((state) => state.login.userId);
+ 
     useEffect(() => {
         api
             .get("jokes")
             .then((response) => {
-                setJokes(response.data.splice(0, 2));
+                setJokes(response.data.filter(j => j.author_id == userId));
             })
             .catch(e => {
                 console.error(e);

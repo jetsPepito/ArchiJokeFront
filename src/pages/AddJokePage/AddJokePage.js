@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import Fab from '@mui/material/Fab';
 import NavigationIcon from '@mui/icons-material/Add';
@@ -15,6 +16,10 @@ const MyJokesPage = () => {
     const [body, setBody] = useState("");
     const [validated, setValidated] = useState(false);
 
+    const userId = useSelector((state) => state.login.userId);
+    const userName = useSelector((state) => state.login.userName);
+
+
     const createJoke = () => {
         setValidated(true);
 
@@ -22,17 +27,21 @@ const MyJokesPage = () => {
             return;
         }
 
+        const joke = 
+        {
+            title,
+            body,
+            date: Date.now(),
+            likes: 0,
+            dislikes: 0,
+            author: userName,
+            author_id: userId || ""
+        };
+
+        console.log(joke);
+
         api
-            .post("jokes",
-                {
-                    title,
-                    body,
-                    date: Date.now(),
-                    likes: 0,
-                    dislikes: 0,
-                    author: "AuthorName",
-                }
-            )
+            .post("jokes", joke)
             .then((_) => {
                 history.push("/myJokes");
             })

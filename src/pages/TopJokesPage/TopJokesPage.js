@@ -9,7 +9,7 @@ const TopJokesPage = () => {
 
     useEffect(() => {
         api
-            .get("http://localhost:8000/jokes")
+            .get("jokes")
             .then((response) => {
                 setJokes(response.data);
             })

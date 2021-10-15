@@ -30,7 +30,7 @@ const login = {
                         dispatch.login.LOGIN({
                             isConnected: true,
                             token: response.data,
-                            userId: decoded.userID,
+                            userId: decoded.userId,
                             userName: decoded.userName
                         });
                     })
