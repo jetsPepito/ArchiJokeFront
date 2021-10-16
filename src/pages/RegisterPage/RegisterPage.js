@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Fab } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box, color } from '@mui/system';
 
 import MyInput from '../../components/MyInput/MyInput';
 import colors from '../../utils/color';
@@ -48,6 +48,11 @@ const RegisterPage = () => {
                 height: '100vh'
             }
         }>
+            <div className="absolute top-10 left-10">
+                <Fab variant="extended" style={{backgroundColor: colors.yellow}} href="login">
+                    Back
+                </Fab>
+            </div>
             <Box
                 width="50%"
                 container
