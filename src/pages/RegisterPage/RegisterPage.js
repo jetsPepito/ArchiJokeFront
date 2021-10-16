@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Fab } from '@mui/material';
-import { Box, color } from '@mui/system';
+import { Box } from '@mui/system';
 
 import MyInput from '../../components/MyInput/MyInput';
 import colors from '../../utils/color';
