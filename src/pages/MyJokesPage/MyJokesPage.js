@@ -13,12 +13,12 @@ const MyJokesPage = () => {
         api
             .get("jokes")
             .then((response) => {
-                setJokes(response.data.filter(j => j.author_id == userId));
+                setJokes(response.data.filter(j => j.author_id === userId));
             })
             .catch(e => {
                 console.error(e);
             });
-    }, []);
+    }, [userId]);
 
     return (
         <PageContainer title="My Jokes">
