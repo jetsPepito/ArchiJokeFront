@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 
@@ -13,6 +14,11 @@ import {
 
 const App = () => {
   const isConnected = useSelector((state) => state.login.isConnected);
+  const token = useSelector((state) => state.login.token)
+
+  if (isConnected)
+    axios.defaults.headers.common['Authorization'] = token
+
 
   return !isConnected ? (
     <Router>
