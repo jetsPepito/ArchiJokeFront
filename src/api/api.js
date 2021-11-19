@@ -45,6 +45,7 @@ class HTTPClient {
   }
 }
 
-const api = new HTTPClient('http://localhost:8000/');
+const url = "http://" + process.env.REACT_APP_BACK_URL + "/"
+const api = new HTTPClient(url);
 
 export default api;
