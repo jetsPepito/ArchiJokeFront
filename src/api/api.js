@@ -45,7 +45,8 @@ class HTTPClient {
   }
 }
 
-const url = "http://" + process.env.REACT_APP_BACK_URL + "/"
+const back_url = process.env.REACT_APP_BACK_URL
+const url = (back_url.includes("http") ? "" : "http://") + back_url + "/"
 const api = new HTTPClient(url);
 
 export default api;
